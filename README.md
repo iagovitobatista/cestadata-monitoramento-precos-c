@@ -1,6 +1,6 @@
-<h1 align="center">🛒 CestaData — Análise e Ordenação de Preços em C</h1>
+<h1 align="center">🛒 CestaData — Da Programação à Modelagem de Dados</h1>
 
-<p align="center"><strong>Projeto acadêmico • Análise e Desenvolvimento de Sistemas • Algoritmos e Pensamento Computacional</strong></p>
+<p align="center"><strong>Projeto acadêmico • Análise e Desenvolvimento de Sistemas • Linguagem C e Modelagem de Dados</strong></p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/Linguagem-C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" />
@@ -12,7 +12,7 @@
 
 O **CestaData** faz parte da trajetória de aprendizagem em linguagem C na graduação em **Análise e Desenvolvimento de Sistemas**. A proposta utiliza preços *simulados* de produtos da cesta básica para exercitar organização e processamento de dados.
 
-Esta publicação documenta a continuidade do projeto na **Experiência Prática IV**, que introduziu a ordenação de preços utilizando o algoritmo **Bubble Sort**.
+O projeto evoluiu em etapas: dos primeiros registros e cálculos de preços à **ordenação com Bubble Sort em C (2.0)** e, agora, ao **levantamento de requisitos e modelagem inicial de dados (3.0)** para o minimundo de um supermercado fictício.
 
 ## 🚀 Evolução do projeto
 
@@ -20,8 +20,24 @@ Esta publicação documenta a continuidade do projeto na **Experiência Prática
 | --- | --- | --- |
 | **Versão inicial** | Primeira atividade acadêmica do CestaData, anterior ao uso de Bubble Sort | Código-fonte original ainda não recuperado; será incorporado sem alterações quando disponível |
 | **CestaData 2.0 — Experiência Prática IV** | Organizar 10 produtos com nome e preço e exibir as sequências original, crescente e decrescente | [Código em C](versoes/v2-bubble-sort/cestadata_2_0.c) · [Notebook Colab](versoes/v2-bubble-sort/CestaData_2_0_Colab.ipynb) |
+| **CestaData 3.0 — Modelagem inicial** | Levantar o minimundo de um supermercado fictício: escopo, atores, processos, entidades e dado x informação | [📘 Documentação do CestaData 3.0](versoes/v3-modelagem/README.md) |
 
 > O código da etapa inicial **não foi recriado artificialmente**. Esta organização permite preservar a versão original assim que for localizada e comparar as duas implementações com fidelidade.
+
+## 🧩 Novidade: CestaData 3.0 — entendimento do negócio
+
+A nova etapa amplia a visão de desenvolvimento: antes de criar novas tabelas ou escrever SQL, estudamos o **minimundo do supermercado** e o fluxo de informações que um sistema precisaria representar.
+
+- **Atores:** gestor, estoquista e responsável pelo cadastro;
+- **Processos:** cadastro de produtos, entradas/saídas, consultas e relatórios;
+- **Entidades identificadas:** Produto, Categoria, Fornecedor e Movimentação de Estoque;
+- **Conceitos:** diferença entre dado e informação e dados estruturados/não estruturados.
+
+📘 **[Ler o levantamento completo da versão 3.0](versoes/v3-modelagem/README.md)**
+
+> Esta etapa é **analítica e documental**. Não há uma implementação 3.0 em C ou SQL concluída nesta fase; o código 2.0 continua preservado abaixo.
+
+---
 
 ## ⚙️ O que a versão 2.0 faz?
 
@@ -68,7 +84,7 @@ Também é possível abrir o [notebook no Google Colab](versoes/v2-bubble-sort/C
 
 ## 🎓 Aprendizagens
 
-Este exercício reforçou os conceitos de **vetores, estruturas (`struct`), funções, laços aninhados, comparações e ordenação de registros**. A principal evolução foi implementar um algoritmo de ordenação preservando a correspondência entre o nome e o preço de cada produto.
+As versões anteriores reforçaram **vetores, estruturas (`struct`), funções e algoritmos de ordenação**. Com o CestaData 3.0, o aprendizado evoluiu para **levantamento de requisitos, compreensão dos processos de negócio e identificação inicial de entidades e informações**, preparando futuras etapas de modelagem.
 
 ---
 
