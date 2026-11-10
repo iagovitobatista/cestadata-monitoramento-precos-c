@@ -20,7 +20,7 @@ O projeto evoluiu em etapas: dos primeiros registros e cálculos de preços à *
 | --- | --- | --- |
 | **Versão inicial** | Primeira atividade acadêmica do CestaData, anterior ao uso de Bubble Sort | Código-fonte original ainda não recuperado; será incorporado sem alterações quando disponível |
 | **CestaData 2.0 — Experiência Prática IV** | Organizar 10 produtos com nome e preço e exibir as sequências original, crescente e decrescente | [Código em C](versoes/v2-bubble-sort/cestadata_2_0.c) · [Notebook Colab](versoes/v2-bubble-sort/CestaData_2_0_Colab.ipynb) |
-| **CestaData 3.0 — Modelagem inicial** | Levantar o minimundo de um supermercado fictício: escopo, atores, processos, entidades e dado x informação | [📘 Documentação do CestaData 3.0](versoes/v3-modelagem/README.md) |
+| **CestaData 3.0 — Modelagem de Dados** | Minimundo de supermercado fictício, entidades, relacionamentos, cardinalidades, DER inicial e revisão até 3FN | [📘 Documentação do CestaData 3.0](versoes/v3-modelagem/README.md) |
 
 > O código da etapa inicial **não foi recriado artificialmente**. Esta organização permite preservar a versão original assim que for localizada e comparar as duas implementações com fidelidade.
 
@@ -30,12 +30,36 @@ A nova etapa amplia a visão de desenvolvimento: antes de criar novas tabelas ou
 
 - **Atores:** gestor, estoquista e responsável pelo cadastro;
 - **Processos:** cadastro de produtos, entradas/saídas, consultas e relatórios;
-- **Entidades identificadas:** Produto, Categoria, Fornecedor e Movimentação de Estoque;
+- **Entidades do DER:** Produto, Categoria, Fornecedor, Produto_Fornecedor, Usuário e Movimentação_Estoque;
 - **Conceitos:** diferença entre dado e informação e dados estruturados/não estruturados.
 
 📘 **[Ler o levantamento completo da versão 3.0](versoes/v3-modelagem/README.md)**
 
 > Esta etapa é **analítica e documental**. Não há uma implementação 3.0 em C ou SQL concluída nesta fase; o código 2.0 continua preservado abaixo.
+
+---
+
+## 🗃️ Diagramas Entidade-Relacionamento — CestaData 3.0
+
+A última aula de **Modelagem de Dados** avançou da identificação das entidades para o desenho dos **relacionamentos e suas cardinalidades**, além da revisão do modelo até a **Terceira Forma Normal (3FN)**.
+
+### DER inicial
+
+![Diagrama Entidade-Relacionamento inicial](imagens/CestaData_3_0_DER_Inicial.png)
+
+O modelo inicial apresenta seis entidades: **Categoria, Produto, Fornecedor, Produto_Fornecedor, Usuário e Movimentação_Estoque**.
+
+**Relacionamentos principais:** Categoria → Produto (1:N), Produto → Movimentação (1:N), Usuário → Movimentação (1:N) e a relação **Produto ↔ Fornecedor (N:N)**, resolvida pela entidade associativa **Produto_Fornecedor**, com chave primária composta.
+
+### DER final — 3FN
+
+![Diagrama Entidade-Relacionamento final em 3FN](imagens/CestaData_3_0_DER_Final_3FN.png)
+
+A segunda imagem registra a etapa de revisão da modelagem e normalização até a **3FN**, com atenção à organização das entidades, chaves e dependências entre atributos.
+
+📘 **[Ver explicação dos relacionamentos, cardinalidades e evolução da modelagem](versoes/v3-modelagem/README.md)**
+
+> A versão 3.0 documenta uma **etapa de modelagem de banco de dados**; não representa a implementação de um banco SQL concluído.
 
 ---
 
