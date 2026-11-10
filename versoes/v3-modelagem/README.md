@@ -46,7 +46,7 @@ O foco é construir uma visão lógica do problema antes de projetar tabelas ou 
 | **Fornecedor** | Representa a origem comercial dos produtos |
 | **Movimentação de Estoque** | Representa os registros de entrada e saída dos itens |
 
-Essas entidades foram identificadas na fase inicial de análise. **Atributos, cardinalidades e regras detalhadas de relacionamento ainda precisarão ser definidos em etapas posteriores.**
+Essas entidades foram identificadas na fase inicial de análise. Na continuidade da disciplina, elas foram detalhadas em diagramas DER, incluindo a entidade associativa `PRODUTO_FORNECEDOR` e a entidade `USUARIO`, como apresentado a seguir.
 
 ## Dado x informação
 
@@ -58,6 +58,42 @@ Essas entidades foram identificadas na fase inicial de análise. **Atributos, ca
 - **Não estruturados:** fotografias e documentos associados aos produtos e fornecedores, caso façam parte de uma evolução futura.
 
 O núcleo inicial do estudo prioriza dados estruturados.
+
+## Evolução da modelagem — diagramas DER
+
+Na continuidade das aulas de Modelagem de Dados, o estudo passou do levantamento do minimundo para a **representação das entidades, seus atributos, chaves e relacionamentos**.
+
+### DER inicial — modelo lógico
+
+![DER inicial do CestaData 3.0](../../imagens/CestaData_3_0_DER_Inicial.png)
+
+O diagrama inicial identifica **seis entidades**: `CATEGORIA`, `PRODUTO`, `FORNECEDOR`, `PRODUTO_FORNECEDOR`, `USUARIO` e `MOVIMENTACAO_ESTOQUE`. Foram definidos identificadores primários (PK), referências entre entidades (FK) e as cardinalidades.
+
+### Relacionamentos definidos
+
+| Relacionamento | Cardinalidade do DER inicial | Interpretação |
+| --- | --- | --- |
+| **Categoria → Produto** | 1 : 0..N | Uma categoria pode reunir vários produtos; cada produto referencia uma categoria |
+| **Produto → Produto_Fornecedor** | 1 : 0..N | Um produto pode participar de vários vínculos com fornecedores |
+| **Fornecedor → Produto_Fornecedor** | 1 : 0..N | Um fornecedor pode aparecer em vários vínculos com produtos |
+| **Produto → Movimentação_Estoque** | 1 : 0..N | Um produto pode possuir diversos registros de movimentação |
+| **Usuário → Movimentação_Estoque** | 1 : 0..N | Um usuário pode registrar diversas movimentações |
+
+**Produto × Fornecedor — relação muitos-para-muitos (N:N):** na modelagem, essa associação foi resolvida com a entidade `PRODUTO_FORNECEDOR`, que possui `id_produto` e `id_fornecedor` como **chaves estrangeiras e componentes de uma chave primária composta**. Assim, um produto pode estar associado a vários fornecedores, e um fornecedor pode estar associado a vários produtos.
+
+**Movimentações de estoque:** cada registro está ligado a um produto e a um usuário por chaves estrangeiras. O modelo contempla o tipo de movimentação (`E` para entrada e `S` para saída), quantidade e data.
+
+### DER final — etapa de normalização até a 3FN
+
+![DER final do CestaData 3.0 — 3FN](../../imagens/CestaData_3_0_DER_Final_3FN.png)
+
+A segunda imagem registra o **modelo final produzido na atividade de normalização até a Terceira Forma Normal (3FN)**. Essa etapa busca organizar atributos e dependências de forma consistente, reduzindo redundâncias e riscos de anomalias de atualização.
+
+As imagens foram preservadas como produzidas na atividade. A descrição detalhada das cardinalidades acima é fundamentada no **DER inicial**; eventuais diferenças específicas entre o inicial e o final devem ser verificadas diretamente nos diagramas, sem presumir mudanças não documentadas.
+
+> **Estágio do projeto:** os DERs são entregas de **modelagem**, não comprovação de implantação de banco de dados ou de comandos SQL executados. O código da versão 2.0 segue disponível separadamente.
+
+---
 
 ## Relação com as etapas anteriores
 
@@ -72,9 +108,8 @@ A terceira etapa amplia a abordagem: além de **processar dados**, é necessári
 ## Possíveis próximas etapas
 
 - Detalhar os atributos e regras de negócio;
-- Elaborar um modelo entidade-relacionamento;
-- Identificar chaves e relacionamentos;
-- Evoluir para um modelo relacional e, posteriormente, SQL;
+- Revisar e refinar os diagramas entidade-relacionamento e as regras de negócio;
+- Validar as decisões de normalização e evoluir para uma implementação em SQL;
 - Conectar a modelagem com uma futura versão funcional do CestaData.
 
 Esses pontos são **possibilidades de evolução**, não funcionalidades já desenvolvidas.
