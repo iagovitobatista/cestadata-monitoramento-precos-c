@@ -20,7 +20,7 @@ O projeto evoluiu em etapas: dos primeiros registros e cálculos de preços à *
 | --- | --- | --- |
 | **Versão inicial** | Primeira atividade acadêmica do CestaData, anterior ao uso de Bubble Sort | Código-fonte original ainda não recuperado; será incorporado sem alterações quando disponível |
 | **CestaData 2.0 — Experiência Prática IV** | Organizar 10 produtos com nome e preço e exibir as sequências original, crescente e decrescente | [Código em C](versoes/v2-bubble-sort/cestadata_2_0.c) · [Notebook Colab](versoes/v2-bubble-sort/CestaData_2_0_Colab.ipynb) |
-| **CestaData 3.0 — Modelagem de Dados** | Minimundo de supermercado fictício, entidades, relacionamentos, cardinalidades, DER inicial e revisão até 3FN | [📘 Documentação do CestaData 3.0](versoes/v3-modelagem/README.md) |
+| **CestaData 3.0 — Modelagem de Dados** | Minimundo de supermercado fictício, entidades, cardinalidades, revisão até 3FN e DER lógico final da EP3 | [📘 Documentação do CestaData 3.0](versoes/v3-modelagem/README.md) |
 
 > O código da etapa inicial **não foi recriado artificialmente**. Esta organização permite preservar a versão original assim que for localizada e comparar as duas implementações com fidelidade.
 
@@ -41,7 +41,7 @@ A nova etapa amplia a visão de desenvolvimento: antes de criar novas tabelas ou
 
 ## 🗃️ Diagramas Entidade-Relacionamento — CestaData 3.0
 
-A última aula de **Modelagem de Dados** avançou da identificação das entidades para o desenho dos **relacionamentos e suas cardinalidades**, além da revisão do modelo até a **Terceira Forma Normal (3FN)**.
+As aulas de **Modelagem de Dados** avançaram da identificação das entidades para o desenho dos **relacionamentos e suas cardinalidades**, além da revisão do modelo até a **Terceira Forma Normal (3FN)**.
 
 ### DER inicial
 
@@ -60,6 +60,20 @@ A segunda imagem registra a etapa de revisão da modelagem e normalização até
 📘 **[Ver explicação dos relacionamentos, cardinalidades e evolução da modelagem](versoes/v3-modelagem/README.md)**
 
 > A versão 3.0 documenta uma **etapa de modelagem de banco de dados**; não representa a implementação de um banco SQL concluído.
+
+---
+
+## 🆕 Última atualização — DER lógico final da EP3
+
+A nova etapa da disciplina consolidou o **DER lógico final**, com seis entidades, relacionamentos e chaves (PK/FK), aplicando conceitos de **normalização até a 3FN**.
+
+![DER lógico final da EP3 — CestaData 3.0](imagens/CestaData_3_0_DER_Logico_Final_EP3.png)
+
+**Principal evolução:** o saldo do estoque é **derivado das movimentações de entrada e saída**, evitando duplicar a quantidade atual na entidade `PRODUTO`. O modelo preserva as relações **Categoria → Produto (1:N)**, **Produto → Movimentação (1:N)**, **Usuário → Movimentação (1:N)** e **Produto ↔ Fornecedor (N:N)** por meio de `PRODUTO_FORNECEDOR`.
+
+📘 [Ler a documentação completa da EP3, incluindo normalização e histórico dos três DERs](versoes/v3-modelagem/README.md).
+
+> Trata-se de uma entrega de **modelagem lógica**, sem banco de dados implementado ou validado em SQL nesta versão.
 
 ---
 
@@ -108,7 +122,7 @@ Também é possível abrir o [notebook no Google Colab](versoes/v2-bubble-sort/C
 
 ## 🎓 Aprendizagens
 
-As versões anteriores reforçaram **vetores, estruturas (`struct`), funções e algoritmos de ordenação**. Com o CestaData 3.0, o aprendizado evoluiu para **levantamento de requisitos, compreensão dos processos de negócio e identificação inicial de entidades e informações**, preparando futuras etapas de modelagem.
+As versões anteriores reforçaram **vetores, estruturas (`struct`), funções e algoritmos de ordenação**. Com o CestaData 3.0, o aprendizado evoluiu para **levantamento de requisitos, modelagem de entidades e relacionamentos, identificação de chaves e normalização até a 3FN**, incluindo a decisão de calcular o saldo de estoque a partir das movimentações.
 
 ---
 
