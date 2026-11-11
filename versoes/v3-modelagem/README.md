@@ -95,13 +95,56 @@ As imagens foram preservadas como produzidas na atividade. A descrição detalha
 
 ---
 
+## Atualização da EP3 — DER lógico final
+
+Na continuidade das aulas, foi elaborado um **novo Diagrama Entidade-Relacionamento lógico final**, reunindo os conceitos de entidades, atributos, chaves primárias (PK), chaves estrangeiras (FK), cardinalidades e normalização.
+
+![CestaData 3.0 — DER lógico final da EP3](../../imagens/CestaData_3_0_DER_Logico_Final_EP3.png)
+
+[🔎 Abrir o DER lógico final em tamanho completo](../../imagens/CestaData_3_0_DER_Logico_Final_EP3.png)
+
+### Evolução do controle de estoque
+
+Uma decisão importante do modelo revisado foi **representar a movimentação como fonte dos dados de entrada e saída**, em vez de manter a quantidade atual como um campo redundante na entidade `PRODUTO`.
+
+Assim, o **saldo de estoque pode ser calculado** a partir dos registros de `MOVIMENTACAO_ESTOQUE`, considerando entradas (`E`) e saídas (`S`):
+
+```text
+Saldo do produto = soma das entradas − soma das saídas
+```
+
+**Por que essa escolha importa?** Evita que um valor de saldo armazenado separadamente fique desatualizado em relação às movimentações, além de reforçar a importância da consistência dos dados. A consulta de saldo e suas regras de validação ainda precisarão ser implementadas e testadas em SQL em uma etapa posterior.
+
+### Estrutura e relacionamentos do DER lógico
+
+O modelo final mantém as seis entidades do domínio: **CATEGORIA**, **PRODUTO**, **FORNECEDOR**, **PRODUTO_FORNECEDOR**, **USUARIO** e **MOVIMENTACAO_ESTOQUE**.
+
+- **Categoria → Produto (1:N):** uma categoria agrupa vários produtos;
+- **Produto ↔ Fornecedor (N:N):** associação resolvida por `PRODUTO_FORNECEDOR`, que vincula suas chaves;
+- **Produto → Movimentação_Estoque (1:N):** cada movimentação se refere a um produto;
+- **Usuário → Movimentação_Estoque (1:N):** cada movimentação é registrada por um usuário.
+
+### Normalização — 1FN, 2FN e 3FN
+
+Na revisão acadêmica do DER, foram considerados a **atomicidade dos atributos (1FN)**, a organização das dependências em relação às chaves (2FN) e a ausência de **dependências transitivas indevidas** entre atributos não chave (3FN).
+
+Este diagrama representa a **conclusão da etapa de modelagem lógica da EP3**, não a implementação de um banco relacional já executado.
+
+### Histórico visual
+
+1. [DER inicial — primeiro levantamento](../../imagens/CestaData_3_0_DER_Inicial.png)
+2. [DER final — estudo de 3FN](../../imagens/CestaData_3_0_DER_Final_3FN.png)
+3. [**DER lógico final — EP3 (mais recente)**](../../imagens/CestaData_3_0_DER_Logico_Final_EP3.png)
+
+---
+
 ## Relação com as etapas anteriores
 
 | Etapa | Principal aprendizado |
 | --- | --- |
 | **1.0** | Registros de preços e cálculos básicos |
 | **2.0** | Organização de produtos com `struct`, vetores e Bubble Sort |
-| **3.0** | Compreensão do domínio, requisitos iniciais e entidades necessárias antes da implementação |
+| **3.0** | Minimundo, relacionamentos, chaves, normalização e DER lógico final da EP3 |
 
 A terceira etapa amplia a abordagem: além de **processar dados**, é necessário entender **quais dados o sistema deve representar, quem os utiliza e para quais decisões**.
 
