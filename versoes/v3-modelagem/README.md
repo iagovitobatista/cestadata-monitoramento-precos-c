@@ -1,4 +1,4 @@
-# CestaData 3.0 — Levantamento do Minimundo e Modelagem Inicial
+# CestaData 3.0 — Do Minimundo ao Modelo Relacional
 
 **Projeto acadêmico | Evolução do CestaData | Análise e Desenvolvimento de Sistemas**
 
@@ -6,7 +6,7 @@
 
 O CestaData começou com exercícios em linguagem C voltados ao registro, análise e ordenação de preços simulados de produtos. Na terceira etapa, o projeto passa a explorar o **levantamento do minimundo de um pequeno supermercado fictício**, preparando a compreensão dos dados necessários para uma futura solução de gestão de produtos e estoque.
 
-Esta atividade é uma **documentação preliminar de análise e modelagem**, e não uma implementação nova de software. **Não foram criadas tabelas SQL nem um novo código C para esta etapa.**
+Este documento acompanha a etapa de **análise e modelagem lógica da EP3**. A **implementação do banco SQLite**, realizada posteriormente na **EP4**, possui [documentação e arquivos próprios](ep4-sql/README.md). Não foi criado um novo programa em C para a versão 3.0.
 
 ## Objetivo do levantamento
 
@@ -91,7 +91,7 @@ A segunda imagem registra o **modelo final produzido na atividade de normalizaç
 
 As imagens foram preservadas como produzidas na atividade. A descrição detalhada das cardinalidades acima é fundamentada no **DER inicial**; eventuais diferenças específicas entre o inicial e o final devem ser verificadas diretamente nos diagramas, sem presumir mudanças não documentadas.
 
-> **Estágio do projeto:** os DERs são entregas de **modelagem**, não comprovação de implantação de banco de dados ou de comandos SQL executados. O código da versão 2.0 segue disponível separadamente.
+> **Contexto histórico:** os DERs documentam a etapa de modelagem (EP3). A implementação e os testes SQL foram realizados na etapa posterior (EP4), documentada [aqui](ep4-sql/README.md). O código C 2.0 segue disponível separadamente.
 
 ---
 
@@ -113,7 +113,7 @@ Assim, o **saldo de estoque pode ser calculado** a partir dos registros de `MOVI
 Saldo do produto = soma das entradas − soma das saídas
 ```
 
-**Por que essa escolha importa?** Evita que um valor de saldo armazenado separadamente fique desatualizado em relação às movimentações, além de reforçar a importância da consistência dos dados. A consulta de saldo e suas regras de validação ainda precisarão ser implementadas e testadas em SQL em uma etapa posterior.
+**Por que essa escolha importa?** Evita que um valor de saldo armazenado separadamente fique desatualizado em relação às movimentações, além de reforçar a importância da consistência dos dados. Na EP4, foi implementada uma **consulta SQL para o saldo**; impedir saídas maiores que a disponibilidade ainda exige validação operacional adicional.
 
 ### Estrutura e relacionamentos do DER lógico
 
@@ -128,13 +128,21 @@ O modelo final mantém as seis entidades do domínio: **CATEGORIA**, **PRODUTO**
 
 Na revisão acadêmica do DER, foram considerados a **atomicidade dos atributos (1FN)**, a organização das dependências em relação às chaves (2FN) e a ausência de **dependências transitivas indevidas** entre atributos não chave (3FN).
 
-Este diagrama representa a **conclusão da etapa de modelagem lógica da EP3**, não a implementação de um banco relacional já executado.
+Este diagrama registra a **conclusão da modelagem lógica da EP3**. A implementação SQL posterior está descrita na [Experiência Prática IV](ep4-sql/README.md).
 
 ### Histórico visual
 
 1. [DER inicial — primeiro levantamento](../../imagens/CestaData_3_0_DER_Inicial.png)
 2. [DER final — estudo de 3FN](../../imagens/CestaData_3_0_DER_Final_3FN.png)
 3. [**DER lógico final — EP3 (mais recente)**](../../imagens/CestaData_3_0_DER_Logico_Final_EP3.png)
+
+---
+
+## Experiência Prática IV — implementação no Colab
+
+O modelo lógico tornou-se um **banco SQLite com seis tabelas**, povoado com **50 registros fictícios** e consultado por comandos SQL no Google Colab.
+
+📘 **[Ver scripts DDL/DML, notebook e dez capturas dos testes](ep4-sql/README.md)**.
 
 ---
 
@@ -148,14 +156,14 @@ Este diagrama representa a **conclusão da etapa de modelagem lógica da EP3**, 
 
 A terceira etapa amplia a abordagem: além de **processar dados**, é necessário entender **quais dados o sistema deve representar, quem os utiliza e para quais decisões**.
 
-## Possíveis próximas etapas
+## Continuidade do projeto
 
 - Detalhar os atributos e regras de negócio;
 - Revisar e refinar os diagramas entidade-relacionamento e as regras de negócio;
-- Validar as decisões de normalização e evoluir para uma implementação em SQL;
+- Ampliar e refinar a implementação SQLite realizada na [EP4](ep4-sql/README.md);
 - Conectar a modelagem com uma futura versão funcional do CestaData.
 
-Esses pontos são **possibilidades de evolução**, não funcionalidades já desenvolvidas.
+Esses pontos são **melhorias futuras**; a primeira implementação SQLite já foi realizada na EP4.
 
 ---
 
